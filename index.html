@@ -5,6 +5,10 @@
 
     <style>
 
+        h1 {
+            font-size: xxx-large;
+        }
+
         h1, h3 {
             font-family: "Cooper Black";
             text-align: center;
@@ -13,6 +17,7 @@
 
         img {
             width: 120px;
+            height: auto;
         }
 
         main {
@@ -20,20 +25,21 @@
             grid-template-rows: 1fr 1fr 1fr 1fr;
             grid-template-columns: 130px 130px 130px 130px;
             grid-gap: 1rem;
-            justify-content: center;
+
         }
 
         article {
-            border: 1px solid darkblue;
+            border: 1px solid darkgray;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-            width: max-content;
+            width: auto;
+            height: auto;
         }
 
         .imgCarte {
             opacity: 0;
         }
 
-        .selectedCarte {
+       .selectedCarte {
             border: 5px solid deepskyblue;
             opacity: 1;
         }
@@ -43,15 +49,41 @@
            opacity: 0.50;
         }
 
+       #chrono {
+           font-size: x-large;
+           border: 10px solid deeppink;
+           border-radius: 50%;
+           padding: 2.5rem;
+           height: max-content;
+           width: max-content;
+           margin: auto;
+       }
+
+       #mainAside {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           gap: 2rem;
+       }
+
     </style>
     <title>Memory</title>
 </head>
 <body>
+<div id="mainAside">
+
+<section id="titles">
 <h1>MeMoRy</h1>
-<h3>Vous pouvez retourner deux cartes à la fois. À vous de jouer !</h3>
+<h3>Vous pouvez retourner deux cartes à la fois.<br> À vous de jouer !</h3>
+    <aside id="chrono">00</aside>
+</section>
+
 <main>
 
 </main>
+
+
+</div>
 
 <script>
     //Création et remplissage de la grille aléatoire
@@ -81,11 +113,20 @@
     }
 
     //Chrono
+    const chronoHtml = document.querySelector("#chrono")
+
     let s = 0
     const chrono = setInterval(countSeconds, 1000)
     function countSeconds() {
         ++s
+        if (s >= 10) {
+            chronoHtml.innerHTML = s
+        } else {
+            chronoHtml.innerHTML = "0" + s
+        }
     }
+
+
 
     //16 images cliquables au départ
     let images = document.getElementsByClassName("imgCarte")
