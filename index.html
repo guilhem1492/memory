@@ -97,7 +97,7 @@
         for (let i = 3; i <= 10; i++) {
             const article = document.createElement("article")
             article.classList.add(`article${i}`)
-            article.innerHTML = `<img src="/memory/Cartes/memo${i}.png" id="carte${i}" class="imgCarte">`
+            article.innerHTML = `<img src="/memory/Cartes/memo${i}.png" class="imgCarte">`
             grille.appendChild(article)
         }
     }
@@ -151,10 +151,10 @@
         e.target.classList.replace("imgCarte", "selectedCarte")
 
         images = document.getElementsByClassName("imgCarte")
-        console.log("Cartes restantes : " + images.length)
+        //console.log("Cartes restantes : " + images.length)
 
         const selectedCartes = document.getElementsByClassName("selectedCarte")
-        console.log("Cartes sélectionnées : " + selectedCartes.length)
+        //console.log("Cartes sélectionnées : " + selectedCartes.length)
 
         if (selectedCartes.length === 2) {
             for (const img of images) {
@@ -172,7 +172,7 @@
 
     //Comparaison des deux cartes retournées
     function checkSelectedCartes(carte1, carte2) {
-        if (carte1.id === carte2.id) {
+        if (carte1.src === carte2.src) {
             carte1.classList.replace("selectedCarte", "outOfGame")
             carte2.classList.replace("selectedCarte", "outOfGame")
             clickReverseCard()
